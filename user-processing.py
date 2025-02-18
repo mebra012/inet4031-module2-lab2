@@ -11,7 +11,7 @@ def main():
     #open the user list file
     try:
 
-        userFile = open("list-of-sers.txt", "r")
+        userFile = open("list-of-users.txt", "r")
 
     except:
         print("\nCould not read the file specified.\n")
