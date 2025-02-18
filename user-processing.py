@@ -4,35 +4,28 @@
 #
 # Created: Nov 11, 2024
 # Updated: Jan 6, 2025
-#
 
-import os
 
 def main():
-    expected_filename = "list-of-users.txt"
-
-    # Check if the file exists before trying to open it
-    if not os.path.exists(expected_filename):
-        print(f"\nError: Expected file '{expected_filename}' not found.")
-        print("\nFiles in the directory:")
-        print("\n".join(os.listdir()))  # Print all files in the directory for debugging
-        return
-
+    # Open the user list file
     try:
-        with open(expected_filename, "r") as userFile:
-            listOfUsers = userFile.readlines()
-            print("\nFile opened successfully!\n")
-    except Exception as e:
-        print(f"\nUnexpected error: {e}\n")
-        return
+        userFile = open("list-of-users.txt", "r")  # <-- Spelling error here ("sers" instead of "users")
+    except:
+        print("\nCould not read the file specified.\n")
+        exit()
 
-    answer = input("\nDo you want to print out the list of users? (Y or N) ")
+    # Load the lines of the file into a list
+    listOfUsers = userFile.readlines()
+    print("\nlist-of-users was read.")
 
-    if answer.lower() == "y":
+    # Ask the user to proceed
+    answer = input("\nDo you want to print out the list of users? (Y or N)")
+
+    if answer == "Y" or answer == "y":
         for userline in listOfUsers:
             print("\n", userline)
     else:
-        print("\nOk, not printing. Ending program.")
+        print("\nOk not printing, ending program.")
 
     print("\nEnd of User Processing\n")
 
